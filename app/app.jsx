@@ -12,7 +12,9 @@ $(document).foundation();
 require('style!css!sass!applicationStyles');
 
 
+var ToDoApp = require('ToDoApp');
+
 ReactDOM.render(
-  <p>Bilerplate 3 Project</p>,
+  <ToDoApp/>,
   document.getElementById('app')
 );
