@@ -27,6 +27,10 @@ var ToDoApp = React.createClass({
         };
     },
 
+    handelAddToDo: function(text){
+        alert('new todo ', text);
+    },
+
     render: function(){
         var {todos} = this.state;
 
