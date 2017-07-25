@@ -4,6 +4,7 @@ var uuid = require('node-uuid');
 var ToDoList = require('ToDoList');
 var AddToDo = require('AddToDo');
 var ToDoSearch = require('ToDoSearch');
+var ToDoAPI = require('ToDoAPI');
 
 var ToDoApp = React.createClass({
 
@@ -11,29 +12,12 @@ var ToDoApp = React.createClass({
         return {
             showCompleted: false,
             searchText: '',
-            todos: [
-                {
-                    id: uuid(),
-                    text: 'Walk the dog',
-                    completed: true
-                },
-                {
-                    id: uuid(),
-                    text: 'Clean the yard',
-                    completed: true
-                },
-                {
-                    id: uuid(),
-                    text: 'Finish tutorial',
-                    completed: false
-                },
-                {
-                    id: uuid(),
-                    text: 'Start learning React Nativ',
-                    completed: false
-                }
-            ]
+            todos: ToDoAPI.getToDos()
         };
+    },
+
+    componentWillUpdate: function() {
+        ToDoAPI.setToDos(this.state.todos);
     },
 
     handleAddToDo: function(text){
@@ -53,7 +37,7 @@ var ToDoApp = React.createClass({
     handleSearch: function(showCompleted, searchText){
         this.setState({
             showCompleted: showCompleted,
-            searchText: searchText.toLowarCase()
+            searchText: searchText.toLowerCase()
         })
     },
 
