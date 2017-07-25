@@ -2,13 +2,20 @@ var React = require('react');
 
 
 var ToDo = React.createClass({
-    render: function(){
 
-        var {id, text} = this.props;
+    handleToggle: function(id){
+        return () => {
+            this.props.onToggle(id);
+        };
+    },
+
+    render: function(){
+        var {id, text, completed} = this.props;
 
         return (
-            <div>
-                {id}. {text}
+            <div onClick={this.handleToggle(id)}>
+                <input type="checkbox" checked={completed}/>
+                {text}
             </div>
         );
     }
