@@ -1,19 +1,19 @@
 var React = require('react');
 
-var ToDoSerach = React.createClass({
+var ToDoSearch = React.createClass({
 
     handleSearch: function(){
         var showCompleted = this.refs.showCompleted.checked;
-        var searchText = this.refs.serach.value;
+        var searchText = this.refs.search.value;
 
-        this.props.onSerach(showCompleted, searchText);
+        this.props.onSearch(showCompleted, searchText);
     },
 
     render: function() {
         return (
             <div>
                 <div>
-                    <input type="serach" ref="serach" placeholder="Search todos"
+                    <input type="search" ref="search" placeholder="Search todos"
                         onChange={this.handleSearch}/>
                 </div>
                 <div>
@@ -27,4 +27,4 @@ var ToDoSerach = React.createClass({
     }
 });
 
-module.exports = ToDoSerach;
+module.exports = ToDoSearch;
