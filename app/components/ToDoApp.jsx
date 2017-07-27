@@ -17,7 +17,7 @@ var ToDoApp = React.createClass({
         };
     },
 
-    componentWillUpdate: function() {
+    componentDidUpdate: function() {
         ToDoAPI.setToDos(this.state.todos);
     },
 
@@ -35,7 +35,6 @@ var ToDoApp = React.createClass({
                 }
             ]
         });
-        ToDoAPI.setToDos(this.state.todos);
     },
 
     handleSearch: function(showCompleted, searchText){
@@ -62,9 +61,17 @@ var ToDoApp = React.createClass({
 
         return (
             <div>
-                <ToDoSearch onSearch={this.handleSearch}/>
-                <ToDoList todos={filterToDos} onToggle={this.handleToggle}/>
-                <AddToDo onAddToDo={this.handleAddToDo} />
+                <h1 className="page-title">Todo App</h1>
+
+                 <div className="row root">
+                      <div className="column">
+                         <div className="container"> 
+                            <ToDoSearch onSearch={this.handleSearch}/>
+                            <ToDoList todos={filterToDos} onToggle={this.handleToggle}/>
+                            <AddToDo onAddToDo={this.handleAddToDo} /> 
+                         </div> 
+                     </div>
+                  </div>
             </div>
         );
     }
