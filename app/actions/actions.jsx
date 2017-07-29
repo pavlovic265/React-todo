@@ -1,5 +1,5 @@
 
-export var setSerachText = (searchText) => {
+export var setSearchText = (searchText) => {
     return {
         type: 'SET_SEARCH_TEXT',
         searchText: searchText

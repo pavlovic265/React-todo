@@ -3,7 +3,7 @@ var uuid = require('node-uuid');
 
 export var searchTextReducer = (state = '', action) => {
     switch(action.type) {
-        case 'SEARCH_TEXT':
+        case 'SET_SEARCH_TEXT':
             return action.searchText;
         default:
             return state;

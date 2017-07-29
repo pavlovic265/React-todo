@@ -8,7 +8,7 @@ describe('Actions', () => {
             searchText: 'Some search text'
         };
 
-        var res = actions.setSerachText(action.searchText);
+        var res = actions.setSearchText(action.searchText);
 
         expect(res).toEqual(action);
     });

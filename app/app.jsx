@@ -14,6 +14,20 @@ require('style!css!sass!applicationStyles');
 
 var ToDoApp = require('ToDoApp');
 
+
+var actions = require('actions');
+var store = require('configureStore').configure();
+
+
+store.subscribe(() => {
+  console.log('New state', store.getState());
+});
+
+store.dispatch(actions.addToDo('Study React Nativ'));
+store.dispatch(actions.setSearchText('React'));
+store.dispatch(actions.toggleShowCompleted());
+
+
 ReactDOM.render(
   <ToDoApp/>,
   document.getElementById('app')
