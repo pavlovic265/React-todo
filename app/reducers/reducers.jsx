@@ -42,6 +42,7 @@ export var todosReducers = (state = [], action) => {
                         completedAt: nextCompleted ? moment().unix() : null
                     }
                 }
+                return todo;
             });
         default:
             return state;

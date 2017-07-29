@@ -3,7 +3,7 @@ var redux = require('redux');
 var {searchTextReducer, showCompletedReducers, todosReducers} = require('reducers');
 
 
-export var configure = () => {
+export var configure = (initialState = {}) => {
 
     var reducers = redux.combineReducers({
         searchText: searchTextReducer,
@@ -11,7 +11,7 @@ export var configure = () => {
         todos: todosReducers
     })
 
-    var store = redux.createStore(reducers, redux.compose(
+    var store = redux.createStore(reducers, initialState, redux.compose(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
 

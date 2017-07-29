@@ -2,12 +2,12 @@ var React = require('react');
 var uuid = require('node-uuid');
 var moment = require('moment');
 
-var ToDoList = require('ToDoList');
-var AddToDo = require('AddToDo');
+import ToDoList from 'ToDoList';
+import AddToDo from 'AddToDo';
 var ToDoSearch = require('ToDoSearch');
 var ToDoAPI = require('ToDoAPI');
 
-var ToDoApp = React.createClass({
+export var ToDoApp = React.createClass({
 
     getInitialState: function(){
         return {
@@ -44,17 +44,6 @@ var ToDoApp = React.createClass({
         })
     },
 
-    handleToggle: function(id) {
-        var updatedTodos = this.state.todos.map((item) => {
-            if(item.id === id) {
-                item.completed = !item.completed;
-                item.completedAt = item.completed ? moment().unix() : null;
-            }
-            return item;
-        });
-        this.setState({todos: updatedTodos});
-    },
-
     render: function(){
         var {todos, showCompleted, searchText} = this.state;
         var filterToDos = ToDoAPI.filterToDos(todos, showCompleted, searchText);
@@ -67,8 +56,8 @@ var ToDoApp = React.createClass({
                       <div className="column">
                          <div className="container"> 
                             <ToDoSearch onSearch={this.handleSearch}/>
-                            <ToDoList todos={filterToDos} onToggle={this.handleToggle}/>
-                            <AddToDo onAddToDo={this.handleAddToDo} /> 
+                            <ToDoList/>
+                            <AddToDo onAddToDo={this.handleAddToDo} />
                          </div> 
                      </div>
                   </div>
@@ -77,4 +66,4 @@ var ToDoApp = React.createClass({
     }
 });
 
-module.exports = ToDoApp;
+export default ToDoApp;

@@ -9,7 +9,7 @@ describe('Reducer', () => {
     describe('serachTextReducer', () => {
         it('should set searchText', () => {
             var action = {
-                type: 'SEARCH_TEXT',
+                type: 'SET_SEARCH_TEXT',
                 searchText: 'Some test'
             };
 
