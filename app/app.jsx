@@ -12,22 +12,23 @@ $(document).foundation();
 //App css
 require('style!css!sass!applicationStyles');
 
-
-// var ToDoApp = require('ToDoApp');
 import ToDoApp from 'ToDoApp';
 
 
 var actions = require('actions');
 var store = require('configureStore').configure();
-
+var ToDoAPI = require('ToDoAPI');
 
 store.subscribe(() => {
-  console.log('New state', store.getState());
+  var state = store.getState();
+  console.log('New state', state);
+  ToDoAPI.setToDos(state.todos);
 });
 
-store.dispatch(actions.addToDo('Study React Nativ'));
-store.dispatch(actions.setSearchText('React'));
-store.dispatch(actions.toggleShowCompleted());
+var initialToDos = ToDoAPI.getToDos();
+
+store.dispatch(actions.addToDos(initialToDos));
+
 
 
 ReactDOM.render(

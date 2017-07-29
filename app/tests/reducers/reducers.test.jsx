@@ -42,6 +42,26 @@ describe('Reducer', () => {
             expect(res.length).toBe(1);
             expect(res[0].text).toEqual(action.text);
         });
+        it('should add todos', () => {
+        var todos = [
+            {
+                id: '123',
+                text: 'Walk Lory',
+                completed: false,
+                createdAt: null,
+                completedAt: '125'
+            }
+        ];
+            var action = {
+                type: 'ADD_TODOS',
+                todos: todos
+            };
+
+            var res = reducers.todosReducers(df([]), df(action));
+
+            expect(res.length).toBe(1);
+            expect(res[0]).toEqual(todos[0]);
+        });
         it('should toggle todo', () => {
             var todos = [
                 {
